@@ -12,7 +12,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
 + Introduction to Basic Keywords
-  - Introduction
+  - Course Introduction
   - From Apps to Hardware
   - Detail Description of Course Content
 
@@ -22,14 +22,14 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
   - Spike Simulation and Debug
 
 + Integer Number Representation  
-  - Unsigned Numbers
-  - Signed Numbers
-  - Labwork
+  - 64-bit Unsigned Numbers
+  - 64-bit Signed Numbers
+  - Labwork For Signed and Unsigned Numbers
 
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
 + Application Binary Interface
-  - Introduction
+  - Introduction to ABI
   - Memmory Allocation for Double Words
   - load, Add and Store Instructions
   - 32-Registers and their ABI Names
