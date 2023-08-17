@@ -9,7 +9,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 +  Routing
 
 # TABLE OF CONTENTS
-# DAY 1 
+## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
 + Introduction to Basic Keywords
   - Introduction
@@ -26,7 +26,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
   - Signed Numbers
   - Labwork
 
-# DAY 2 
+## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
 + Application Binary Interface
   - Introduction
