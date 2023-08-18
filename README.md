@@ -98,7 +98,6 @@ int main(){
 	return 0;
 }
 ```
-<img width="345" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2d5e3fe1-f8fd-434b-8faf-2912d3c056e1">
 
 Using the gcc compiler, we compiled the program to get the output.
 
