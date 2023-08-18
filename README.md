@@ -103,13 +103,15 @@ Using the gcc compiler, we compiled the program to get the output.
 
 `gcc sumton.c`
 `.\a.out`
-<img width="545" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/0b7e7911-d0b2-4a6a-aefd-cd9b4d520a4f">
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/838fe23f-5655-4724-af96-ab8ae13f084d)
+
 
 ## RISCV GCC Compiler and Dissemble
 
 Using the riscv gcc compiler `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`, we compiled the C program.
 
-Using `ls -ltr sum1ton.c`, we can check that the object file is created.
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ecee943b-5723-463e-907f-fed2d45e2c41)
 
 To get the assembly code for the C program, `riscv64-unknown-elf-objdump -d sum1ton.o | less` .
 
