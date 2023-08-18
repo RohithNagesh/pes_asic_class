@@ -23,21 +23,21 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 
 + Integer Number Representation  
   - [64-bit Unsigned Numbers](#64-bit-unsigned-numbers)
-  - 64-bit Signed Numbers
-  - Labwork For Signed and Unsigned Numbers
+  - [64-bit Signed Numbers](#64-bit-signed-numbers)
+  - [Labwork For Signed and Unsigned Numbers](#labwork-for-signed-and-unsigned-numbers)
 
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
 + Application Binary Interface
-  - Introduction to ABI
-  - Memmory Allocation for Double Words
-  - Load, Add and Store Instructions
-  - 32-Registers and their ABI Names
+  - [Introduction to ABI](#introduction-to-abi)
+  - [Memmory Allocation for Double Words](#memmory-allocation-for-double-words)
+  - [Load, Add and Store Instructions](#load,-add-and-store-instructions)
+  - [32-Registers and their ABI Names](#32-registers-and-their-abi-names)
 
 + Labwork using ABI Function Calls
-  - Algorithm for C Program using ASM
-  - Review ASM Function Calls
-  - Simulate C Program using Function Call
+  - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
+  - [Review ASM Function Calls](#review-asm-function-calls)
+  - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
