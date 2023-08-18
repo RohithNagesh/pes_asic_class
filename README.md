@@ -119,12 +119,11 @@ In order to view the main section, type `/main`.
 
 Here, since we used `-O1` optimisation, the number of instructions are 14.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/d8870366-e79e-47c2-8134-6d860616807b)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/827b74dd-879d-4720-8a4a-5ba09e28abc3)
 
 When we use `-Ofast` optimisation, we can see that the number of instructions have been 11
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/2eb34ce7-0acd-4769-9257-672d3e1079a2)
-
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/f8489527-7c38-49b1-994a-dcb895a0e3c8)
 
 ## Spike Simulation and Debug
 
