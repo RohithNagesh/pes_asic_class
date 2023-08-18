@@ -14,10 +14,10 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + Introduction to Basic Keywords
   - [Introduction](#introduction)
   - [From Apps to Hardware](#from-apps-to-hardware)
-  - Detail Description of Course Content
+  - [Detail Description of Course Content](#detail-decription-of-course-content)
 
 + Labwork for RISCV Toolchain
-  - C Program
+  - [C Program](#c-program)
   - RISCV GCC Compiler and Dissemble
   - Spike Simulation and Debug
 
@@ -109,32 +109,34 @@ Using the gcc compiler, we compiled the program to get the output.
 
 ## RISCV GCC Compiler and Dissemble
 
-Using the riscv gcc compiler `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sum1ton.o sum1ton.c`, we compiled the C program.
+Using the riscv gcc compiler `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sumton.o sumton.c`, we compiled the C program.
 
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ecee943b-5723-463e-907f-fed2d45e2c41)
 
-To get the assembly code for the C program, `riscv64-unknown-elf-objdump -d sum1ton.o | less` .
+To get the assembly code for the C program, `riscv64-unknown-elf-objdump -d sumton.o | less` .
 
 In order to view the main section, type `/main`.
 
-Here, since we used -O1 optimisation, the number of instructions are 15.
+Here, since we used `-O1` optimisation, the number of instructions are 14.
 
-<img width="453" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/98843b92-0beb-4bfc-ba4b-1dac5c93ed3c">
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/d8870366-e79e-47c2-8134-6d860616807b)
 
-When we use -Ofast optimisation, we can see that the number of instructions have been reduced to 12.
-<img width="422" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/3eb7afcd-0645-4340-bcac-ae2dc3258ce3">
+When we use `-Ofast` optimisation, we can see that the number of instructions have been 11
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/2eb34ce7-0acd-4769-9257-672d3e1079a2)
+
 
 ## Spike Simulation and Debug
 
 `spike pk sum1ton.o` is used to check whether the instructions produced are right to give the correct output.
 
-<img width="523" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/2fa7d825-102f-41ed-b9e6-a31c2417cb22">
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/91cefa96-d8ff-470d-a463-93c8622c321a)
 
 `spike -d pk sum1ton.c` is used for debugging.
 
 The contents of the registers can also be viewed.
 
-<img width="317" alt="image" src="https://github.com/Veda1809/pes_asic_class/assets/142098395/be6fcaa9-ab93-46e0-8da3-7b8056d09f0c">
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/a769813b-a924-4ea7-8578-e99bbfdf221b)
 
 # Integer Number Representation 
 
@@ -147,15 +149,36 @@ The contents of the registers can also be viewed.
 - Range : -(2^(N-1)) to 2^(N-1) - 1.
  
 ## Labwork
+**Unsigned 64-bit Number**
 
+``` c
+#include <stdio.h>
+#include <math.h>
 
+int main(){
+	unsigned long long int max = (unsigned long long int) (pow(2,64) -1);
+	unsigned long long int min = (unsigned long long int) (pow(2,64) *(-1));
+	printf("lowest number represented by unsigned 64-bit integer is %llu\n",min);
+	printf("highest number represented by unsigned 64-bit integer is %llu\n",max);
+	return 0;
+}
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/26b09651-3729-48bb-adc5-405fbbb7c5dc)
 
+**Signed 64-bit Number**
+``` c
+#include <stdio.h>
+#include <math.h>
 
-
-
-
-
-
+int main(){
+	long long int max = (long long int) (pow(2,63) -1);
+	long long int min = (long long int) (pow(2,63) *(-1));
+	printf("lowest number represented by signed 64-bit integer is %lld\n",min);
+	printf("highest number represented by signed 64-bit integer is %lld\n",max);
+	return 0;
+}
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/538fd46d-94df-41e9-aa18-83a0a5ba6526)
 
 # Application Binary Interface
 ## Introduction to ABI
