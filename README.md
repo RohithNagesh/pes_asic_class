@@ -93,3 +93,6 @@ ABI names for registers serve as a standardized way to designate the purpose and
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b735fc44-0c08-40e8-8303-c338647dbd9f)
 # Labwork using ABI Function Calls
 ## Algorithm for C Program using ASM
+Incorporating assembly language code into a C program can be done using inline assembly or by linking separate assembly files with your C code.
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ffc50adf-e98f-4d03-bd4a-9332be23b9ef)
