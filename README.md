@@ -18,11 +18,11 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 
 + Labwork for RISCV Toolchain
   - [C Program](#c-program)
-  - RISCV GCC Compiler and Dissemble
-  - Spike Simulation and Debug
+  - [RISCV GCC Compiler and Dissemble](#riscv-gcc-compiler-dissemblr)
+  - [Spike Simulation and Debug](#spike-simulation-and-debug)
 
 + Integer Number Representation  
-  - 64-bit Unsigned Numbers
+  - [64-bit Unsigned Numbers](#64-bit-unsigned-numbers)
   - 64-bit Signed Numbers
   - Labwork For Signed and Unsigned Numbers
 
