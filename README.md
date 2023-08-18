@@ -93,6 +93,53 @@ ABI names for registers serve as a standardized way to designate the purpose and
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b735fc44-0c08-40e8-8303-c338647dbd9f)
 # Labwork using ABI Function Calls
 ## Algorithm for C Program using ASM
-Incorporating assembly language code into a C program can be done using inline assembly or by linking separate assembly files with your C code.
+- Incorporating assembly language code into a C program can be done using inline assembly or by linking separate assembly files with your C code.
+- When you call an assembly function from your C code, the C calling convention is followed, including pushing arguments onto the stack or passing them in registers as required.
+- The program executes the assembly function, following the assembly instructions you've provided.
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/1d76b7ef-cac9-4331-9190-31af36525e0c)
+## Review ASM Function Calls
+- You write your C code in one file and your assembly code in a separate file.
+- In the assembly file, you declare assembly functions with appropriate signatures that match the calling conventions of your platform.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ffc50adf-e98f-4d03-bd4a-9332be23b9ef)
+**C Program**
+`custom1to9.c`
+  ``` c
+  #include <stdio.h>
+  
+  extern int load(int x, int y);
+  
+  int main()
+  {
+    int result = 0;
+    int count = 9;
+    result = load(0x0, count+1);
+    printf("Sum of numbers from 1 to 9 is %d\n", result);
+  }
+```
+**Asseembly File**
+`load.s`
+``` s
+.section .text
+.global load
+.type load, @function
+
+load:
+
+add a4, a0, zero
+add a2, a0, a1
+add a3, a0, zero
+
+loop:
+
+add a4, a3, a4
+addi a3, a3, 1
+blt a3, a2, loop
+add a0, a4, zero
+ret
+```
+## Simulate C Program using Function Call
+**Compilation:** To compile C code and Asseembly file use the command `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o custom1to9.o custom1to9.c load.s` this would generate object file `custom1to9.o`.
+
+**Execution:** To execute the object file run the command `spike pk custom1to9.o`
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ddb45c8c-11cc-4d49-b31d-c922698e6301)
