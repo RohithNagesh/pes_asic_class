@@ -141,7 +141,7 @@ The contents of the registers can also be viewed.
 
 ## Unsigned Numbers
 - Unsigned numbers, also known as non-negative numbers, are numerical values that represent magnitudes without indicating direction or sign.
-- Range: 0 to 2^(N-1) - 1.
+- Range: 0 to 2^(N) - 1.
 
 ## Signed Numbers
 - Signed numbers are numerical values that can represent both positive and negative magnitudes, along with zero.
