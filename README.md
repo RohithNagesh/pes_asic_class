@@ -6,7 +6,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + Floorplanning
 + placement
 + clock Tree Synthesis
-+  Routing
++ Routing
 
 # TABLE OF CONTENTS
 ## DAY 1 
@@ -86,3 +86,10 @@ In this Example
 - `x9` is the destination register.
 - `x10` and `x11` are the source registers.
 ## 32-Registers and their ABI Names
+The choice of the number of registers in a processor's architecture, such as the RISC-V RV64 architecture with its 32 general-purpose registers, involves a trade-off between various factors. While modern processors can have more registers but increasing the number of registers could lead to larger instructions, which would take up more memory and potentially slow down instruction fetch and decode.
+#### ABI Names
+ABI names for registers serve as a standardized way to designate the purpose and usage of specific registers within a software ecosystem. These names play a critical role in maintaining compatibility, optimizing code generation, and facilitating communication between different software components. 
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b735fc44-0c08-40e8-8303-c338647dbd9f)
+# Labwork using ABI Function Calls
+## Algorithm for C Program using ASM
