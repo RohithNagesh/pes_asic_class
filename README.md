@@ -63,8 +63,19 @@ Load instructions are used to transfer data from memory to registers. They allow
 
 Example `ld x6, 8(x5)`
 
-In this example
+In this Example
 - `ld` is the load double-word instruction.
 - `x6` is the destination register.
 - `8` is the offset
 - `x5` conatins base address
+2. **Store Instructions:**
+Store instructions are used to write data from registers into memory.They store values from registers into memory addresses
+
+Example `sd x8, 8(x9)`
+
+In this Example
+- `sd` is the store double-word instruction.
+- `x8` is the source register.
+- `8` is the offset
+- `x9` conatins base address
+3. 
