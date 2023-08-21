@@ -284,3 +284,20 @@ ret
 **Execution:** To execute the object file run the command `spike pk custom1to9.o`
 
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ddb45c8c-11cc-4d49-b31d-c922698e6301)
+## Lab to Run C-Program on RISCV-CPU
+
+`git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
+
+`cd riscv_workshop_collaterals`
+
+`ls -ltr`
+
+`cd labs`
+
+`ls -ltr`
+
+`chmod 777 rv32im.sh`
+
+`./rv32im.sh`
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/3b8e5a8d-8f66-4621-ae35-3123f8e4f3f0)
