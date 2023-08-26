@@ -62,7 +62,6 @@ This would install riscv toolchain along with iverilog
 ## DAY 3
 **Introduction to Verilog RTL design and Synthesis**
 + [Introduction to open-source simulator iverilog](#introduction-to-open-source-simulator-iverilog)
-   - Introduction to iverilog design test bench
 + [Labs using iverilog and gtkwave](#labs-using-iverilog-and-gtkwave)
    - Introduction to lab
    - Introduction iverilog gtkwave 
@@ -82,20 +81,20 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 5
 **Combinational and sequential optmizations**
-+ Introduction to optimizations
-+ Combinational logic optimizations
-+ Sequential logic optimizations
-+ Sequential optimzations for unused outputs
++ [Introduction to optimizations](#)
++ [Combinational logic optimizations](#)
++ [Sequential logic optimizations](#)
++ [Sequential optimzations for unused outputs](#)
 
 ## DAY 6
 **GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
-+ GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements
++ [GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#)
    - GLS Concepts And Flow Using Iverilog
    - Synthesis Simulation Mismatch
    - Blocking And Non Blocking Statements In Verilog
    - Caveats With Blocking Statements
-+ Labs on GLS and Synthesis-Simulation Mismatch
-+ Lab on synth-sim mismatch for blocking statement
++ [Labs on GLS and Synthesis-Simulation Mismatch](#)
++ [Lab on synth-sim mismatch for blocking statement](#)
 
 ***
 # Introduction to Basic Keywords
