@@ -10,12 +10,21 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 
 # INSTALLATION
 <details>
-  <summary> RISC-V toolchain </summary>
-  <br>
+<summary> RISC-V toolchain </summary>
+
+ 1. Download riscv_toolchain.sh from the repo
+ 2. Open terminal and go to the directory where riscv_toolchain.sh is present
+ 3. run the commands `chmod +x riscv_toolchain.sh` `./riscv_toolchain.sh`
+
+This would install riscv toolchain along with iverilog
 </details>
+
 <details>
-  <summary> Yosys </summary>
-  <br>
+<summary> Yosys </summary>
+
+1. Download yosys.sh from the repo
+2. Open terminal and go to the directory where yosys.sh is present
+3. run the commands `chmod +x yosys.sh` `./yosys.sh`
 </details>
 
 # TABLE OF CONTENTS
