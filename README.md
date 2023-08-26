@@ -38,6 +38,7 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
   - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
   - [Review ASM Function Calls](#review-asm-function-calls)
   - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
+  - [Lab to Run C-Program on RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
@@ -102,16 +103,15 @@ int main(){
 Using the gcc compiler, we compiled the program to get the output.
 
 `gcc sumton.c`
-`.\a.out`
+`./a.out`
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/838fe23f-5655-4724-af96-ab8ae13f084d)
-
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/c7eca245-fb7a-441f-9965-f4628658e014)
 
 ## RISCV GCC Compiler and Dissemble
 
 Using the riscv gcc compiler `riscv64-unknown-elf-gcc -O1 -mabi=lp64 -march=rv64i -o sumton.o sumton.c`, we compiled the C program.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ecee943b-5723-463e-907f-fed2d45e2c41)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/7e8cfb78-97f8-4f77-bc07-c3a7983a4761)
 
 To get the assembly code for the C program, `riscv64-unknown-elf-objdump -d sumton.o | less` .
 
@@ -119,23 +119,23 @@ In order to view the main section, type `/main`.
 
 Here, since we used `-O1` optimisation, the number of instructions are 14.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/827b74dd-879d-4720-8a4a-5ba09e28abc3)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/46189555-4bd1-41cc-aa3d-eb2542588350)
 
 When we use `-Ofast` optimisation, we can see that the number of instructions have been 11
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/f8489527-7c38-49b1-994a-dcb895a0e3c8)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b0873b53-f854-4b91-89bd-40135b2d8824)
 
 ## Spike Simulation and Debug
 
-`spike pk sum1ton.o` is used to check whether the instructions produced are right to give the correct output.
+`spike pk sumton.o` is used to check whether the instructions produced are right to give the correct output.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/91cefa96-d8ff-470d-a463-93c8622c321a)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/30f7da1b-dc0d-41f5-b3e6-df89193e03a5)
 
-`spike -d pk sum1ton.c` is used for debugging.
+`spike -d pk sumton.c` is used for debugging.
 
 The contents of the registers can also be viewed.
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/a769813b-a924-4ea7-8578-e99bbfdf221b)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/50bc3470-bedb-48df-a8e6-0d60c51e4d0d)
 
 # Integer Number Representation 
 
@@ -162,7 +162,7 @@ int main(){
 	return 0;
 }
 ```
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/26b09651-3729-48bb-adc5-405fbbb7c5dc)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/68566f80-7ea4-4249-ac80-5d0fae736720)
 
 **Signed 64-bit Number**
 ``` c
@@ -177,7 +177,7 @@ int main(){
 	return 0;
 }
 ```
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/538fd46d-94df-41e9-aa18-83a0a5ba6526)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/5df8b32d-6eb1-4dfe-8452-7a352bedbdce)
 
 # Application Binary Interface
 ## Introduction to ABI
@@ -283,7 +283,8 @@ ret
 
 **Execution:** To execute the object file run the command `spike pk custom1to9.o`
 
-![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ddb45c8c-11cc-4d49-b31d-c922698e6301)
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/4f8f612c-82a6-48ab-9e67-6dce4eab704d)
+
 ## Lab to Run C-Program on RISCV-CPU
 
 `git clone https://github.com/kunalg123/riscv_workshop_collaterals.git`
