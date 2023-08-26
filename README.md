@@ -72,7 +72,7 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 4
 **Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
-+ [Introduction to timing .libs](#introduction-to-timing-.libs)
++ [Introduction to timing dot libs](#introduction-to-timing-dot-libs)
 + [Hierarchical vs Flat Synthesis](#)
 + [Various Flop Coding Styles and optimization](#)
    - Why Flops and Flop coding styles 
@@ -529,4 +529,4 @@ module good_mux(i0, i1, sel, y);
   assign y = _3_;
 endmodule
 ```
-# Introduction to timing .libs
+# Introduction to timing dot libs
