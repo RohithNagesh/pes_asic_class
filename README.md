@@ -65,26 +65,17 @@ This would install riscv toolchain along with iverilog
    - Introduction to iverilog design test bench
 + Labs using iverilog and gtkwave
    - Introduction to lab
-   - Introduction iverilog gtkwave part1
-   - Introduction iverilog gtkwave part2
+   - Introduction iverilog gtkwave 
 + Introduction to Yosys and Logic synthesis
    - Introduction to yosys
-   - Introduction to logic synthesis part1
-   - Introduction to logic synthesis part2
-+ Labs using Yosys and Sky130 PDKsLabs using Yosys and Sky130 PDKs
-   - Yosys 1 good mux Part1
-   - Yosys 1 good mux Part2
-   - Yosys 1 good mux Part3
+   - Introduction to logic synthesis
++ Labs using Yosys and Sky130 PDKs
+   - Yosys lab
 
 ## DAY 4
 **Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
 + Introduction to timing .libs
-   - Introduction to dot Lib part1
-   - Introduction to dot Lib part2
-   - Introduction to dot Lib part3
 + Hierarchical vs Flat Synthesis
-   - Hier synthesis flat synthesis part1
-   - Hier synthesis flat synthesis part2
 + Various Flop Coding Styles and optimization
    - Why Flops and Flop coding styles part1
    - Why Flops and Flop coding styles part2
@@ -408,5 +399,153 @@ ret
 - `git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git`
 - This should create a folder `sky130RTLDesignAndSynthesisWorkshop` in `VDS` directory
 - You could see two folders under `sky130RTLDesignAndSynthesisWorkshop`
-   1. My_lib: It contains all the standard cell libraries and verilog module
+   1. my_lib: It contains all the standard cell libraries and verilog module
    2. verilog_files: It contains all the source code and testbench required for the lab
+  
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/eff9cd5c-8777-4fd1-9c44-7049a8888f69)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/7b5ecd53-ea8c-455c-97cd-494186205d38)
+
+## Introduction iverilog gtkwave
+- Go to verilog_files directory
+- Load Design and Testbench using the command `iverilog good_mux.v tb_good_mux.v`
+### good_mux.v
+``` v
+module good_mux (input i0 , input i1 , input sel , output reg y);
+always @ (*)
+begin
+	if(sel)
+		y <= i1;
+	else 
+		y <= i0;
+end
+endmodule
+```
+### tb_good_mux.v
+``` v
+timescale 1ns / 1ps
+module tb_good_mux;
+	// Inputs
+	reg i0,i1,sel;
+	// Outputs
+	wire y;
+
+        // Instantiate the Unit Under Test (UUT)
+	good_mux uut (
+		.sel(sel),
+		.i0(i0),
+		.i1(i1),
+		.y(y)
+	);
+
+	initial begin
+	$dumpfile("tb_good_mux.vcd");
+	$dumpvars(0,tb_good_mux);
+	// Initialize Inputs
+	sel = 0;
+	i0 = 0;
+	i1 = 0;
+	#300 $finish;
+	end
+
+always #75 sel = ~sel;
+always #10 i0 = ~i0;
+always #55 i1 = ~i1;
+endmodule
+```
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/08c3765f-68a7-4ce9-a85e-dba11388535d)
+
+- Upon loading sucessfully `a.out` will be generated
+- Execute the generated file it would dump `gtkwave tb_good_mux.vcd` file
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/4aa3e2c6-cd9c-4c95-85d2-119263f89fb5)
+
+- Load the vcd file to simulator using the command `gtkwave tb_good_mux.vcd`
+  
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/ff5aadc9-fefc-4bdf-9b34-35d55d4c198d)
+
+# Introduction to Yosys and Logic synthesis
+## Introduction to yosys
+Yosys is an synthesizer which is used to convert RTL to netlist
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/bceda35c-e373-485b-8092-e210e37543f8)
+
+**`netlist` is the representation of `DESIGN` in the form of standard cells present in `.lib`**
+
+- To verify synthesis Netlist need to be fed to iverilog along with testbench
+- vcd file generated from iverilog need to be fed to gtkwave simulator
+- The output we get should be same as the output we got during RTL simulator
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/4c2fdb59-fa8c-4512-978a-ccf4bd6bbf6d)
+
+## Introduction to logic synthesis
+Logic synthesis is a vital step in digital circuit design where high-level descriptions of circuits are transformed into specific implementations using logic gates. It optimizes circuits for factors like performance, area, power, and cost. The process includes library mapping, optimization, technology mapping, timing analysis, and verification. It's an iterative process often done with specialized software tools, enabling efficient hardware design.
+
+**.lib:** 
+- Logic synthesis tools use a library of standard cells. These cells are predefined logic gates with different functionalities and characteristics
+- It will also contain fast and slow version of same gate
+### why fast and slow version of same gate?
+Fast and slow versions of gates are essential in digital circuit design to balance between clock frequency and timing constraints. Fast gates have shorter propagation delays and are used to reduce setup and hold time violations, allowing for higher clock frequencies. Slow gates, with longer delays, can be used to intentionally slow down critical paths or address timing issues. The Tclk formula helps calculate the maximum clock frequency while considering these factors.
+
+**Tclk formula:** ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/4737db4a-c1db-47a3-8c6b-1c8634c00189)
+
+- **t_setup:** The setup time is the minimum time before the clock edge when the input data must be stable.
+- **t_hold:** The hold time is the minimum time after the clock edge during which the input data must remain stable.
+- **t_propagation:** This term represents the propagation delay of the logic gates in the critical path.
+- **Tcq:** This term represents the clock-to-q delay of the flip-flops or registers used in the design. It's often a fixed value based on the chosen flip-flop technology.
+
+# Labs using Yosys and Sky130 PDKsLabs using Yosys and Sky130 PDKs
+## Yosys lab
+Steps to realize good_mux(design) in terms of standard cells avilable in library sky130_fd_sc_hd__tt_025C_1v80.lib
++ Go to verilog_files directory
++ once you get to verilog_files directory, Invoke yosys by using the command `yosys`
+  ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/5f168642-82a8-4ad9-8541-ff484076757e)
+
+  1. Read library: `read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+     ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/b0ad59a0-9d69-4a67-a553-5bdc80a8b530)
+
+  3. Read design: `read_verilog good_mux.v`
+     ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/2e3da0ba-5af4-4f76-98b1-829924177dba)
+
+  5. Synthesis: `synth -top good_mux`
+     ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/f25366a7-f109-4eeb-b692-959a3824d9bd)
+
+  7. Generate netlist: `abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib`
+     ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/a392baf5-8d4d-4e16-84df-7cb80c744815)
+
+  9. Logic realized: `show`
+      ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/9926df63-37ad-49c2-b936-e6e763a81f9a)
+
+  10. Write netlist: `write_verilog -noattr good_mux_netlist.v`, `!gvim good_mux_netlist.v`
+      ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/47c48966-4f66-4bcc-8858-30649485c8f3)
+### good_mux_netlist.v
+``` v
+/* Generated by Yosys 0.32+51 (git sha1 6405bbab1, gcc 12.3.0-1ubuntu1~22.04 -fPIC -Os) */
+
+module good_mux(i0, i1, sel, y);
+  wire _0_;
+  wire _1_;
+  wire _2_;
+  wire _3_;
+  input i0;
+  wire i0;
+  input i1;
+  wire i1;
+  input sel;
+  wire sel;
+  output y;
+  wire y;
+  sky130_fd_sc_hd__mux2_1 _4_ (
+    .A0(_0_),
+    .A1(_1_),
+    .S(_2_),
+    .X(_3_)
+  );
+  assign _0_ = i0;
+  assign _1_ = i1;
+  assign _2_ = sel;
+  assign y = _3_;
+endmodule
+```
+# Introduction to timing .libs
