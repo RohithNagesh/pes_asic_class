@@ -1,3 +1,4 @@
+sudo apt install git -y
 git clone https://github.com/YosysHQ/yosys.git
 cd yosys
 sudo apt install make -y
