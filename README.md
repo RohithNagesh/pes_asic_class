@@ -8,6 +8,16 @@ The objective of VLSI (Very Large Scale Integration) physical design for ASICs (
 + clock Tree Synthesis
 + Routing
 
+# INSTALLATION
+<details>
+  <summary> RISC-V toolchain </summary>
+  <br>
+</details>
+<details>
+  <summary> Yosys </summary>
+  <br>
+</details>
+
 # TABLE OF CONTENTS
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
