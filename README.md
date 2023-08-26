@@ -30,7 +30,7 @@ This would install riscv toolchain along with iverilog
 # TABLE OF CONTENTS
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
-+ [Introduction to Basic Keywords](#intraduction-to-basic-keywords)
++ [Introduction to Basic Keywords](#introduction-to-basic-keywords)
   - Introduction
   - From Apps to Hardware
   - Detail Description of Course Content
@@ -61,7 +61,7 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 3
 **Introduction to Verilog RTL design and Synthesis**
-+ [Introduction to open-source simulator iverilog](#intraduction-to-open-source-simulator-iverilog)
++ [Introduction to open-source simulator iverilog](#introduction-to-open-source-simulator-iverilog)
    - Introduction to iverilog design test bench
 + [Labs using iverilog and gtkwave](#labs-using-iverilog-and-gtkwave)
    - Introduction to lab
