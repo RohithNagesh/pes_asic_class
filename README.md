@@ -68,7 +68,7 @@ This would install riscv toolchain along with iverilog
 + [Introduction to Yosys and Logic synthesis](#introduction-to-yosys-and-logic-synthesis)
    - Introduction to yosys
    - Introduction to logic synthesis
-+ [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
++ [Lab using Yosys and Sky130 PDKs](#lab-using-yosys-and-sky130-pdks)
 
 ## DAY 4
 **Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
@@ -477,7 +477,7 @@ Fast and slow versions of gates are essential in digital circuit design to balan
 - **t_propagation:** This term represents the propagation delay of the logic gates in the critical path.
 - **Tcq:** This term represents the clock-to-q delay of the flip-flops or registers used in the design. It's often a fixed value based on the chosen flip-flop technology.
 
-# Labs using Yosys and Sky130 PDKsLabs using Yosys and Sky130 PDKs
+# Lab using Yosys and Sky130 PDKs
 Steps to realize good_mux(design) in terms of standard cells avilable in library sky130_fd_sc_hd__tt_025C_1v80.lib
 + Go to verilog_files directory
 + once you get to verilog_files directory, Invoke yosys by using the command `yosys`
