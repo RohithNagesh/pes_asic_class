@@ -389,4 +389,24 @@ ret
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/3b8e5a8d-8f66-4621-ae35-3123f8e4f3f0)
 # Introduction to open-source simulator iverilog
 ## Introduction to iverilog design test bench
+**Simulator:** RTL design is checked for adherence to the spec by simulating the design. Simulator is the tool used for simulating the design
 
+**Design:** Design is the actual verilog codeor set of verilog codes which has the intended functionality to meet with the required specification
+
+**Testbench:** Testbench is the setup to apply stimulus to the design to check its functionality
+### How do simulator works?
+- Looks for the changes in input signal
+- upon change to the input the out put is evaluated
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/bc8c633a-7955-4bd1-8796-343db61642c3)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/27cf3101-8f13-44d0-a878-a56163a5d311)
+
+# Labs using iverilog and gtkwave
+## Introduction to lab
+- Make new directory `mkdie VSD`
+- `git clone https://github.com/kunalg123/sky130RTLDesignAndSynthesisWorkshop.git`
+- This should create a folder `sky130RTLDesignAndSynthesisWorkshop` in `VDS` directory
+- You could see two folders under `sky130RTLDesignAndSynthesisWorkshop`
+   1. My_lib: It contains all the standard cell libraries and verilog module
+   2. verilog_files: It contains all the source code and testbench required for the lab
