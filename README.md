@@ -30,76 +30,62 @@ This would install riscv toolchain along with iverilog
 # TABLE OF CONTENTS
 ## DAY 1 
 **Introduction to RISCV ISA and GNU Compiler Toolchain**
-+ Introduction to Basic Keywords
-  - [Introduction](#introduction)
-  - [From Apps to Hardware](#from-apps-to-hardware)
-  - [Detail Description of Course Content](#detail-decription-of-course-content)
++ [Introduction to Basic Keywords](#intraduction-to-basic-keywords)
+  - Introduction
+  - From Apps to Hardware
+  - Detail Description of Course Content
 
-+ Labwork for RISCV Toolchain
-  - [C Program](#c-program)
-  - [RISCV GCC Compiler and Dissemble](#riscv-gcc-compiler-dissemblr)
-  - [Spike Simulation and Debug](#spike-simulation-and-debug)
++ [Labwork for RISCV Toolchain](#labwork-for-riscv-toolchain)
+  - C Program
+  - RISCV GCC Compiler and Dissemble
+  - Spike Simulation and Debug
 
-+ Integer Number Representation  
-  - [64-bit Unsigned Numbers](#64-bit-unsigned-numbers)
-  - [64-bit Signed Numbers](#64-bit-signed-numbers)
-  - [Labwork For Signed and Unsigned Numbers](#labwork-for-signed-and-unsigned-numbers)
-
++ [Integer Number Representation](#integer-number-representation)
+  - 64-bit Unsigned Numbers
+  - 64-bit Signed Numbers
+  - Labwork For Signed and Unsigned Numbers
+    
 ## DAY 2 
 **Introduction to ABI and Basic Verification Flow**
-+ Application Binary Interface
-  - [Introduction to ABI](#introduction-to-abi)
-  - [Memmory Allocation for Double Words](#memmory-allocation-for-double-words)
-  - [Load, Add and Store Instructions](#load,-add-and-store-instructions)
-  - [32-Registers and their ABI Names](#32-registers-and-their-abi-names)
++ [Application Binary Interface](#application-binary-interface)
+  - Introduction to ABI
+  - Memmory Allocation for Double Words
+  - Load, Add and Store Instructions
+  - 32-Registers and their ABI Names
 
-+ Labwork using ABI Function Calls
-  - [Algorithm for C Program using ASM](#algorithm-for-c-program-using-asm)
-  - [Review ASM Function Calls](#review-asm-function-calls)
-  - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
-  - [Lab to Run C-Program on RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
++ [Labwork using ABI Function Calls](#labwork-using-abi-function-calls)
+  - Algorithm for C Program using ASM
+  - Review ASM Function Calls
+  - Simulate C Program using Function Call
+  - Lab to Run C-Program on RISCV-CPU
 
 ## DAY 3
 **Introduction to Verilog RTL design and Synthesis**
-+ Introduction to open-source simulator iverilog
++ [Introduction to open-source simulator iverilog](#intraduction-to-open-source-simulator-iverilog)
    - Introduction to iverilog design test bench
-+ Labs using iverilog and gtkwave
++ [Labs using iverilog and gtkwave](#labs-using-iverilog-and-gtkwave)
    - Introduction to lab
    - Introduction iverilog gtkwave 
-+ Introduction to Yosys and Logic synthesis
++ [Introduction to Yosys and Logic synthesis](#introduction-to-yosys-and-logic-synthesis)
    - Introduction to yosys
    - Introduction to logic synthesis
-+ Labs using Yosys and Sky130 PDKs
-   - Yosys lab
++ [Labs using Yosys and Sky130 PDKs](#labs-using-yosys-and-sky130-pdks)
 
 ## DAY 4
 **Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
-+ Introduction to timing .libs
-+ Hierarchical vs Flat Synthesis
-+ Various Flop Coding Styles and optimization
-   - Why Flops and Flop coding styles part1
-   - Why Flops and Flop coding styles part2
-   - Lab flop synthesis simulations part1
-   - Lab flop synthesis simulations part2
-   - Interesting optimisations part1
-   - Interesting optimisations part2
++ [Introduction to timing .libs](#introduction-to-timing-.libs)
++ [Hierarchical vs Flat Synthesis](#)
++ [Various Flop Coding Styles and optimization](#)
+   - Why Flops and Flop coding styles 
+   - Lab flop synthesis simulations
+   - Interesting optimisations 
 
 ## DAY 5
 **Combinational and sequential optmizations**
 + Introduction to optimizations
-   - Introduction to optimisations part1
-   - Introduction to optimisations part2
-   - Introduction to optimisations part3
 + Combinational logic optimizations
-   - Combinational Logic Optimisations part1
-   - Combinational Logic Optimisations part2
 + Sequential logic optimizations
-   - Sequential Logic Optimisations part1
-   - Sequential Logic Optimisations part2
-   - Sequential Logic Optimisations part3
 + Sequential optimzations for unused outputs
-   - Sequential optimzations for unused outputs part1
-   - Sequential optimzations for unused outputs part2
 
 ## DAY 6
 **GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
@@ -109,12 +95,9 @@ This would install riscv toolchain along with iverilog
    - Blocking And Non Blocking Statements In Verilog
    - Caveats With Blocking Statements
 + Labs on GLS and Synthesis-Simulation Mismatch
-   - Lab on GLS and Synthesis-Simulation Mismatch part1
-   - Lab on GLS and Synthesis-Simulation Mismatch part2
 + Lab on synth-sim mismatch for blocking statement
-   - Lab on synth-sim mismatch for blocking statement part1
-   - Lab on synth-sim mismatch for blocking statement part2
 
+***
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
@@ -496,7 +479,6 @@ Fast and slow versions of gates are essential in digital circuit design to balan
 - **Tcq:** This term represents the clock-to-q delay of the flip-flops or registers used in the design. It's often a fixed value based on the chosen flip-flop technology.
 
 # Labs using Yosys and Sky130 PDKsLabs using Yosys and Sky130 PDKs
-## Yosys lab
 Steps to realize good_mux(design) in terms of standard cells avilable in library sky130_fd_sc_hd__tt_025C_1v80.lib
 + Go to verilog_files directory
 + once you get to verilog_files directory, Invoke yosys by using the command `yosys`
