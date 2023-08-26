@@ -58,6 +58,72 @@ This would install riscv toolchain along with iverilog
   - [Review ASM Function Calls](#review-asm-function-calls)
   - [Simulate C Program using Function Call](#simulate-c-program-using-function-call)
   - [Lab to Run C-Program on RISCV-CPU](#lab-to-run-c-program-on-riscv-cpu)
+
+## DAY 3
+**Introduction to Verilog RTL design and Synthesis**
++ Introduction to open-source simulator iverilog
+   - Introduction to iverilog design test bench
++ Labs using iverilog and gtkwave
+   - Introduction to lab
+   - Introduction iverilog gtkwave part1
+   - Introduction iverilog gtkwave part2
++ Introduction to Yosys and Logic synthesis
+   - Introduction to yosys
+   - Introduction to logic synthesis part1
+   - Introduction to logic synthesis part2
++ Labs using Yosys and Sky130 PDKsLabs using Yosys and Sky130 PDKs
+   - Yosys 1 good mux Part1
+   - Yosys 1 good mux Part2
+   - Yosys 1 good mux Part3
+
+## DAY 4
+**Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
++ Introduction to timing .libs
+   - Introduction to dot Lib part1
+   - Introduction to dot Lib part2
+   - Introduction to dot Lib part3
++ Hierarchical vs Flat Synthesis
+   - Hier synthesis flat synthesis part1
+   - Hier synthesis flat synthesis part2
++ Various Flop Coding Styles and optimization
+   - Why Flops and Flop coding styles part1
+   - Why Flops and Flop coding styles part2
+   - Lab flop synthesis simulations part1
+   - Lab flop synthesis simulations part2
+   - Interesting optimisations part1
+   - Interesting optimisations part2
+
+## DAY 5
+**Combinational and sequential optmizations**
++ Introduction to optimizations
+   - Introduction to optimisations part1
+   - Introduction to optimisations part2
+   - Introduction to optimisations part3
++ Combinational logic optimizations
+   - Combinational Logic Optimisations part1
+   - Combinational Logic Optimisations part2
++ Sequential logic optimizations
+   - Sequential Logic Optimisations part1
+   - Sequential Logic Optimisations part2
+   - Sequential Logic Optimisations part3
++ Sequential optimzations for unused outputs
+   - Sequential optimzations for unused outputs part1
+   - Sequential optimzations for unused outputs part2
+
+## DAY 6
+**GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
++ GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements
+   - GLS Concepts And Flow Using Iverilog
+   - Synthesis Simulation Mismatch
+   - Blocking And Non Blocking Statements In Verilog
+   - Caveats With Blocking Statements
++ Labs on GLS and Synthesis-Simulation Mismatch
+   - Lab on GLS and Synthesis-Simulation Mismatch part1
+   - Lab on GLS and Synthesis-Simulation Mismatch part2
++ Lab on synth-sim mismatch for blocking statement
+   - Lab on synth-sim mismatch for blocking statement part1
+   - Lab on synth-sim mismatch for blocking statement part2
+
 # Introduction to Basic Keywords
 ## Introduction
 - **ISA (Instruction Set Archhitecture)**
@@ -321,3 +387,6 @@ ret
 `./rv32im.sh`
 
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/3b8e5a8d-8f66-4621-ae35-3123f8e4f3f0)
+# Introduction to open-source simulator iverilog
+## Introduction to iverilog design test bench
+
