@@ -73,9 +73,9 @@ This would install riscv toolchain along with iverilog
 ## DAY 4
 **Timing libs, hierarchical vs flat synthesis and efficient flop coding styles**
 + [Introduction to timing dot libs](#introduction-to-timing-dot-libs)
-+ [Hierarchical vs Flat Synthesis](#)
-+ [Various Flop Coding Styles and optimization](#)
-   - Why Flops and Flop coding styles 
++ [Hierarchical vs Flat Synthesis](#hierarchical-vs-flat-synthesis)
++ [Various Flop Coding Styles and optimization](#various-flop-coding-styles-and-optimization)
+   - Flop coding styles 
    - Lab flop synthesis simulations
    - Interesting optimisations 
 
@@ -361,14 +361,13 @@ ret
 
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/3b8e5a8d-8f66-4621-ae35-3123f8e4f3f0)
 # Introduction to open-source simulator iverilog
-## Introduction to iverilog design test bench
 **Simulator:** RTL design is checked for adherence to the spec by simulating the design. Simulator is the tool used for simulating the design
 
 **Design:** Design is the actual verilog codeor set of verilog codes which has the intended functionality to meet with the required specification
 
 **Testbench:** Testbench is the setup to apply stimulus to the design to check its functionality
 ### How do simulator works?
-- Looks for the changes in input signal
+- It looks for the changes in input signal
 - upon change to the input the out put is evaluated
 
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/bc8c633a-7955-4bd1-8796-343db61642c3)
@@ -530,3 +529,420 @@ module good_mux(i0, i1, sel, y);
 endmodule
 ```
 # Introduction to timing dot libs
+### sky130_fd_sc_hd__tt_025C_1v80.lib
+
++ **sky130:** This indicates that the library is associated with the SkyWater 130nm process technology. Process technology refers to the manufacturing process used to create integrated circuits (ICs) and determines factors like transistor size and performance characteristics.
+  
++ **fd_sc_hd:** These letters likely stand for different aspects of the library. "fd" might refer to "Foundation," suggesting that this library contains fundamental building blocks for digital IC design. "sc" could stand for "Standard Cells," which are pre-designed logic gates used in IC design. "hd" could refer to "high-density" libraries, which typically contain smaller, more compact cell designs for achieving higher logic density in ICs.
+  
++ **tt_025C:** This part of the name could refer to the library's operating conditions or temperature and voltage settings. "tt" might stand for "typical temperature," and "025C" could refer to 25 degrees Celsius, a common temperature for IC specifications. These conditions are important for characterizing the library's performance.
+  
++ **1v80:** This likely represents the supply voltage for the library. In this case, "1v80" indicates a supply voltage of 1.8 volts, which is a common voltage level for digital ICs.
+
+### Libraries contain
+
++ **Standard Cells:** This library is likely to include a variety of standard cells, which are pre-designed building blocks for digital logic. Standard cells consist of logic gates (e.g., AND, OR, XOR), flip-flops, latches, multiplexers, and other fundamental digital components. These cells are characterized for the specific process technology (in this case, SkyWater 130nm) and operating conditions (temperature and voltage).
+  
++ **Timing Information:** The library will provide timing information for each standard cell. This information includes parameters like propagation delay, setup time, hold time, and other timing characteristics. Designers use this data to ensure that signals propagate correctly through the logic gates.
+  
++ **Power Characteristics:** Power consumption data is crucial for estimating the energy usage of a design. The library will typically include information on dynamic power (power consumed when the circuit is switching) and static power (power consumed when the circuit is idle).
+  
++ **Pin and I/O Information:** The library will specify the input and output pins for each standard cell, including pin names, directions (input or output), and electrical characteristics.
+  
++ **Library Files:** These library files often come in various formats, including Liberty (.lib) files, which contain detailed timing and power information, and Verilog models, which allow designers to use these standard cells in their digital designs.
+  
++ **Characterization Data:** The library may include data characterizing how the standard cells perform under different operating conditions, including variations in temperature and supply voltage. This helps designers account for variability in their designs.
+  
++ **Technology Files:** These files might also include information about the specific characteristics of the SkyWater 130nm process technology, such as transistor models, interconnect information, and other process-related data.
+
+# Hierarchical vs Flat Synthesis
+### Hierarchical Synthesis
+- Hierarchical synthesis involves dividing the design into logical modules or blocks and synthesizing each module separately.
+- These modules can have their own hierarchies, and they communicate through well-defined interfaces
+- It enhances reusability, as individual modules can be reused in other designs.
+- Supports better scalability for large, complex designs.
+
+### Steps to Hierarchical Synthesis
+- Go to verilog_files directory
+- once you get to verilog_files directory, Invoke yosys by using the command `yosys`
+- once yosys is invoked follow the above sequence of commands
+  ``` sh
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+  read_verilog multiple_modules.v
+  synth -top multiple_modules
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  show multiple_modules
+  write_verilog -noattr multiple_modules_hier.v
+  !gvim multiple_modules_hier.v
+  ```
+  ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/377a4c27-2da0-494a-9b60-b4d34f564334)
+
+  **multiple_modules_hier.v**
+  ``` v
+  /* Generated by Yosys 0.32+51 (git sha1 6405bbab1, gcc 12.3.0-1ubuntu1~22.04 -fPIC -Os) */
+
+  module multiple_modules(a, b, c, y);
+    input a;
+    wire a;
+    input b;
+    wire b;
+    input c;
+    wire c;
+    wire net1;
+    output y;
+    wire y;
+    sub_module1 u1 (
+      .a(a),
+      .b(b),
+      .y(net1)
+    );
+    sub_module2 u2 (
+      .a(net1),
+      .b(c),
+      .y(y)
+    );
+  endmodule
+ 
+  module sub_module1(a, b, y);
+    wire _0_;
+    wire _1_;
+    wire _2_;
+    input a;
+    wire a;
+    input b;
+    wire b;
+    output y;
+    wire y;
+    sky130_fd_sc_hd__and2_0 _3_ (
+      .A(_1_),
+      .B(_0_),
+      .X(_2_)
+    );
+    assign _1_ = b;
+    assign _0_ = a;
+    assign y = _2_;
+  endmodule
+
+  module sub_module2(a, b, y);
+    wire _0_;
+    wire _1_;
+    wire _2_;
+    input a;
+    wire a;
+    input b;
+    wire b;
+    output y;
+    wire y;
+    sky130_fd_sc_hd__or2_0 _3_ (
+      .A(_1_),
+      .B(_0_),
+      .X(_2_)
+    );
+    assign _1_ = b;
+    assign _0_ = a;
+    assign y = _2_;
+  endmodule
+  ```
+### Flat Synthesis
+- In flat synthesis, the entire design is synthesized as a single, monolithic entity.
+- All modules, submodules, and logic are flattened into a single level of hierarchy.
+- This means that all components, regardless of their intended functionality, are combined into a single giant netlist
+- Best suited for simple designs where complexity is low and maintainability isn't a significant concern.
+
+### Steps to Flat Synthesis
+- Go to verilog_files directory
+- once you get to verilog_files directory, Invoke yosys by using the command `yosys`
+- once yosys is invoked follow the above sequence of commands
+  ``` sh
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+  read_verilog multiple_modules.v
+  synth -top multiple_modules
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  flatten
+  show
+  write_verilog -noattr multiple_modules_flat.v
+  !gvim multiple_modules_flat.v
+  ```
+  ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/54c5a8af-be44-4a08-976b-bc63df3563a2)
+
+  **multiple_modules_flat.v**
+  ``` v
+  /* Generated by Yosys 0.32+51 (git sha1 6405bbab1, gcc 12.3.0-1ubuntu1~22.04 -fPIC -Os) */
+
+  module multiple_modules(a, b, c, y);
+    wire _0_;
+    wire _1_;
+    wire _2_;
+    wire _3_;
+    wire _4_;
+    wire _5_;
+    input a;
+    wire a;
+    input b;
+    wire b;
+    input c;
+    wire c;
+    wire net1;
+    wire \u1.a ;
+    wire \u1.b ;
+    wire \u1.y ;
+    wire \u2.a ;
+    wire \u2.b ;
+    wire \u2.y ;
+    output y;
+    wire y;
+    sky130_fd_sc_hd__and2_0 _6_ (
+      .A(_1_),
+      .B(_0_),
+      .X(_2_)
+    );
+    sky130_fd_sc_hd__or2_0 _7_ (
+      .A(_4_),
+      .B(_3_),
+      .X(_5_)
+    );
+    assign _4_ = \u2.b ;
+    assign _3_ = \u2.a ;
+    assign \u2.y  = _5_;
+    assign \u2.a  = net1;
+    assign \u2.b  = c;
+    assign y = \u2.y ;
+    assign _1_ = \u1.b ;
+    assign _0_ = \u1.a ;
+    assign \u1.y  = _2_;
+    assign \u1.a  = a;
+    assign \u1.b  = b;
+    assign net1 = \u1.y ;
+  endmodule
+  ```
+# Various Flop Coding Styles and optimization
+## Flop coding styles
+**Asynchronous Reset D Flip-Flop**
+- When an asynchronous reset input is activated (set to '1'), regardless of the clock signal, the stored value is forced to '0'.
+- Otherwise, on the positive edge of the clock signal, the stored value is updated with the data input.
+### dff_asyncres_syncres.v
+``` v
+module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+always @ (posedge clk , posedge async_reset)
+begin
+	if(async_reset)
+		q <= 1'b0;
+	else if (sync_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+**Asynchronous Set D Flip-Flop**
+- When an asynchronous set input is activated (set to '1'), regardless of the clock signal, the stored value is forced to '1'.
+- Otherwise, on the positive edge of the clock signal, the stored value is updated with the data input.
+### dff_async_set.v
+``` v
+module dff_async_set ( input clk ,  input async_set , input d , output reg q );
+always @ (posedge clk , posedge async_set)
+begin
+	if(async_set)
+		q <= 1'b1;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+**Synchronous Reset D Flip-Flop**
+- When a synchronous reset input is activated (set to '1') at the positive edge of the clock signal, the stored value is forced to '0'.
+- Otherwise, on the positive edge of the clock signal, the stored value is updated with the data input.
+### dff_syncres.v
+``` v
+module dff_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+always @ (posedge clk )
+begin
+	if (sync_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+
+**D Flip-Flop with Asynchronous Reset and Synchronous Reset**
+- This flip-flop combines both asynchronous and synchronous reset features.
+- When the asynchronous reset input is activated (set to '1'), the stored value is immediately forced to '0'.
+- When the synchronous reset input is activated (set to '1') at the positive edge of the clock signal, the stored value is forced to '0'.
+- Otherwise, on the positive edge of the clock signal, the stored value is updated with the data input.
+### dff_asyncres_syncres.v
+``` v
+module dff_asyncres_syncres ( input clk , input async_reset , input sync_reset , input d , output reg q );
+always @ (posedge clk , posedge async_reset)
+begin
+	if(async_reset)
+		q <= 1'b0;
+	else if (sync_reset)
+		q <= 1'b0;
+	else	
+		q <= d;
+end
+endmodule
+```
+## Flop synthesis simulations 
+**Asynchronous Reset D Flip-Flop**
+
+**Simulation**
+
+Go to verilog_files directory where the design and test_bench are present
+
+Run the following commands to simulate dff_asyncres.v
+```
+iverilog dff_asyncres.v tb_dff_asyncres.v
+./a.ot
+gtkwave tb_dff_asyncres.vcd
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/fbd85981-4df1-4bf3-a163-0a3aded4e15c)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/1a7778f4-ba78-42e0-ab43-39b75364ccde)
+
+**Synthsis**
+
+Go to verilog_files directory and invoke yosys
+
+Once you invoke yosys, Run following commands to Synthsis dff_asyncres
+```
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+  read_verilog dff_asyncres.v
+  synth -top dff_asyncres
+  dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  show
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/1549a409-e731-4a58-a7cb-66d59669d030)
+
+**Asynchronous set D Flip-Flop**
+
+**Simulation**
+
+Go to verilog_files directory where the design and test_bench are present
+
+Run the following commands to simulate dff_async_set.v
+```
+iverilog dff_async_set.v tb_dff_async_set.v
+./a.ot
+gtkwave tb_dff_async_set.vcd
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/d72175bd-f0ad-49b8-ab8d-ff67eda7ae64)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/c8e3250e-da10-41d0-9993-97a531949ca3)
+
+**Synthsis**
+
+Go to verilog_files directory and invoke yosys
+
+Once you invoke yosys, Run following commands to Synthsis dff_async_set
+```
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+  read_verilog dff_async_set.v
+  synth -top dff_async_set
+  dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  show
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/427946a3-c7d7-46f9-8dc8-75649126b4ed)
+
+**Asynchronous Reset D Flip-Flop**
+
+**Simulation**
+
+Go to verilog_files directory where the design and test_bench are present
+
+Run the following commands to simulate dff_syncres.v
+```
+iverilog dff_asyncres.v tb_dff_syncres.v
+./a.ot
+gtkwave tb_dff_syncres.vcd
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/9d5d7632-bc01-4fc2-a38f-9a6565261280)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/26064cde-211e-42b2-b1fc-7852120a01eb)
+
+**Synthsis**
+
+Go to verilog_files directory and invoke yosys
+
+Once you invoke yosys, Run following commands to Synthsis dff_syncres
+```
+  read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+  read_verilog dff_syncres.v
+  synth -top dff_syncres
+  dfflibmap -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib 
+  abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+  show
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/6b39b840-7294-460d-93ec-c6c7da59d7ca)
+
+ ## Interesting optimisations 
+ **mult_2.v**
+``` v
+module mul2 (input [2:0] a, output [3:0] y);
+	assign y = a * 2;
+endmodule
+```
+***Synthsis**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog mult_2.v
+synth -top mul2
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr mul2_netlist.v
+!gvim mul2_netlist.v
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/7aa10ce6-4797-4e09-b44c-5fa73b82b889)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/56eeaf43-fa5b-4b44-a2ba-6fbf874c423d)
+
+**mul2_netlist.v**
+```
+/* Generated by Yosys 0.32+51 (git sha1 6405bbab1, gcc 12.3.0-1ubuntu1~22.04 -fPIC -Os) */
+
+module mul2(a, y);
+  input [2:0] a;
+  wire [2:0] a;
+  output [3:0] y;
+  wire [3:0] y;
+  assign y = { a, 1'h0 };
+endmodule
+```
+
+ **mult_8.v**
+``` v
+module mult8 (input [2:0] a , output [5:0] y);
+	assign y = a * 9;
+endmodule
+```
+***Synthsis**
+```
+read_liberty -lib ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib  
+read_verilog mult_2.v
+synth -top mult8
+abc -liberty ../lib/sky130_fd_sc_hd__tt_025C_1v80.lib
+show
+write_verilog -noattr mult8_netlist.v
+!gvim mult8_netlist.v
+```
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/dc0ab421-deb8-4449-b5ef-58946b2ddd27)
+
+![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/f3bcbe12-1b0e-4dc9-b906-09d320a87de7)
+
+**mult8_netlist.v**
+```
+/* Generated by Yosys 0.32+51 (git sha1 6405bbab1, gcc 12.3.0-1ubuntu1~22.04 -fPIC -Os) */
+
+module mult8(a, y);
+  input [2:0] a;
+  wire [2:0] a;
+  output [5:0] y;
+  wire [5:0] y;
+  assign y = { a, a };
+endmodule
+```
