@@ -88,7 +88,7 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 6
 **GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
-+ [GLS Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
++ [GLS Synthesis-Simulation mismatch and Blocking Non-blocking statements](#gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
    - GLS Concepts And Flow Using Iverilog
    - Synthesis Simulation Mismatch
    - Blocking And Non Blocking Statements In Verilog
