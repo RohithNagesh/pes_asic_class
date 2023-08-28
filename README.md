@@ -1218,5 +1218,5 @@ endmodule
 ```
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/665b9150-3faa-4fb2-96f0-149022c4f864)
 
-# GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements
+# GLS Synthesis-Simulation mismatch and Blocking/Non-blocking statements
 ## GLS Concepts And Flow Using Iverilog
