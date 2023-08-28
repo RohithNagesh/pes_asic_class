@@ -81,20 +81,20 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 5
 **Combinational and sequential optmizations**
-+[Introduction to optimizations](#)
-+ [Combinational logic optimizations](#)
-+ [Sequential logic optimizations](#)
-+ [Sequential optimzations for unused outputs](#)
++ [Introduction to optimizations](#introduction-to-optimizations)
++ [Combinational logic optimizations](#combinational-logic-optimizations)
++ [Sequential logic optimizations](#sequential-logic-optimizations)
++ [Sequential optimzations for unused outputs](#sequential-optimzations-for-unused-outputs)
 
 ## DAY 6
 **GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
-+ [GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#)
++ [GLS, Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#gls,-synthesis-simulation-mismatch-and-blocking/non-blocking-statements)
    - GLS Concepts And Flow Using Iverilog
    - Synthesis Simulation Mismatch
    - Blocking And Non Blocking Statements In Verilog
    - Caveats With Blocking Statements
-+ [Labs on GLS and Synthesis-Simulation Mismatch](#)
-+ [Lab on synth-sim mismatch for blocking statement](#)
++ [Labs on GLS and Synthesis-Simulation Mismatch](#labs-on-gls-and-synthesis-simulation-mismatch)
++ [Lab on synth-sim mismatch for blocking statement](#lab-on-synth-sim-mismatch-for-blocking-statement)
 
 ***
 # Introduction to Basic Keywords
