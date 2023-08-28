@@ -88,7 +88,7 @@ This would install riscv toolchain along with iverilog
 
 ## DAY 6
 **GLS, blocking vs non-blocking and Synthesis-Simulation mismatch**
-+ [GLS Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#gls-synthesis-simulation-mismatch-and-blocking/non-blocking-statements)
++ [GLS Synthesis-Simulation mismatch and Blocking/Non-blocking statements](#gls-synthesis-simulation-mismatch-and-blocking-non-blocking-statements)
    - GLS Concepts And Flow Using Iverilog
    - Synthesis Simulation Mismatch
    - Blocking And Non Blocking Statements In Verilog
@@ -1218,7 +1218,7 @@ endmodule
 ```
 ![image](https://github.com/RohithNagesh/pes_asic_class/assets/103078929/665b9150-3faa-4fb2-96f0-149022c4f864)
 
-# GLS Synthesis-Simulation mismatch and Blocking/Non-blocking statements
+# GLS Synthesis-Simulation mismatch and Blocking Non-blocking statements
 ## GLS Concepts And Flow Using Iverilog
 ### Gate level simulation
 + Gate-level simulation is a method used in electronics design to test and verify digital circuits at the level of individual logic gates and flip-flops.
